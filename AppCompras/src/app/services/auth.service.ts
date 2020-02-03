@@ -5,16 +5,21 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
   public user: any = null;
-  constructor() { }
+  constructor() {
+    if (localStorage.getItem('user')) {
+      this.user = JSON.parse(localStorage.getItem('user'));
+    }
+  }
 
-  login(user, userC, password, passwordC) {
+  login(user, userC, password, passwordC, id) {
      if (user === userC && password === passwordC){
       localStorage.setItem('user', JSON.stringify({
-        user, password
+        user, password, id
       }));
       return true;
      }
   }
+
 
   geUserLogin() {
     if (localStorage.getItem('user')) {

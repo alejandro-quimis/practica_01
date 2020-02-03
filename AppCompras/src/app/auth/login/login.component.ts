@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
         this.user[i].nombre,
         this.formulario.get('usuario').value,
         this.user[i].contrasena,
-        this.formulario.get('contrasena').value)) {
+        this.formulario.get('contrasena').value, this.user[i].codigo )) {
           window.location.reload();
           break;
         } else {

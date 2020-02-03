@@ -5,13 +5,17 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegistroComponent } from './auth/registro/registro.component';
 import { HomeComponent } from './static/home/home.component';
 import { ListacompraComponent } from './components/listacompra/listacompra.component';
+import { RegistrarcompraComponent } from './components/registrarcompra/registrarcompra.component';
+import { ActualizarComponent } from './auth/actualizar/actualizar.component';
 
 
 const routes: Routes = [
   {path: 'home' , component: HomeComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'registro', component: RegistroComponent, canActivate: [GuardsGuard]},
-  {path: 'listarcompras' , component: ListacompraComponent, canActivate: [GuardsGuard]}
+  {path: 'registro', component: RegistroComponent},
+  {path: 'listarcompras' , component: ListacompraComponent, canActivate: [GuardsGuard]},
+  {path: 'registrarcompras' , component: RegistrarcompraComponent, canActivate: [GuardsGuard]},
+  {path: 'actualizarusuario' , component: ActualizarComponent, canActivate: [GuardsGuard]},
   ];
   
 @NgModule({
