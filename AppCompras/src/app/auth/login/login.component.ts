@@ -4,6 +4,7 @@ import { UsuarioService } from '../../services/usuario/usuario.service';
 import { Router, CanActivate } from '@angular/router';
 import { Usuario } from 'src/app/models/usuario';
 import { AuthService } from '../../services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -31,34 +32,32 @@ export class LoginComponent implements OnInit {
   submit() {
     // tslint:disable-next-line: prefer-for-of
     for (let i = 0; i < this.user.length; i++) {
-      // tslint:disable-next-line: max-line-length
-      /*if (this.user[i].nombre === this.formulario.get('usuario').value && 
-      this.user[i].contrasena ===   this.formulario.get('contrasena').value) {
-        this.login = true;
-        this._auth.login();
-        break;
-      }*/
       if (this._auth.login(
         this.user[i].nombre,
         this.formulario.get('usuario').value,
         this.user[i].contrasena,
         this.formulario.get('contrasena').value)) {
-          this.login = true;
-          this.router.navigate['/registro'];
+          window.location.reload();
           break;
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Usuario O Contraseña incorrecta',
+          });
         }
     }
-
-    
   }
 
-  obtenersesion(){
-      if (this._auth.geUserLogin() === null) {
-        console.log(this._auth.geUserLogin());
+  obtenersesion(): boolean {
+      if (this._auth.user === null) {
         return false;
-
+      } else if(this._auth.user !== null){
+                return  true;
       }
   }
+
   ngOnInit(){
+   
   }
 }

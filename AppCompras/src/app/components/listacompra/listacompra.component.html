@@ -1,0 +1,25 @@
+<div class="container" style="margin-top:20px;">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">cantidad</th>
+                <th scope="col">fecha</th>
+                <th scope="col">producto</th>
+                <th scope="col">valor</th>
+                <th scope="col">total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let compras of this.compras ">
+                <th>{{compras.codigo}}</th>
+                <th>{{compras.cantidad}}</th>
+                <th>{{compras.fecha}}</th>
+                <th>{{compras.productoByProducto.nombre}}</th>
+                <th>{{compras.productoByProducto.valor}}</th>
+                <th>{{compras.total}}</th>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
